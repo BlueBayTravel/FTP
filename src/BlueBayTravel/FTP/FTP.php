@@ -58,7 +58,7 @@
 		 * @param  string $directory directory to list
 		 * @return array
 		 */
-		public function listing($directory = '.') {
+		public function ls($directory = '.') {
 			return ftp_nlist($this->cID, $directory);
 		}
 
