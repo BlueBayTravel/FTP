@@ -1,5 +1,5 @@
 {
-	"name": "bluebaytravel/FTP",
+	"name": "bluebaytravel/ftp",
 	"description": "Laravel 4 FTP Service Provider",
 	"keywords": ["ftp", "laravel"],
 	"license": "MIT",
