@@ -92,11 +92,11 @@
 
 		/**
 		 * Downloads a file from the server to a local destination.
-		 * @param  string $fromFle
+		 * @param  string $fromFile
 		 * @param  string $toFile
 		 * @return boolean
 		 */
-		public function download($fromFle, $toFile) {
+		public function download($fromFile, $toFile) {
 			return ftp_get($this->cID, $toFile, $fromFile, $this->getTransferModeForFile($fromFile));
 		}
 
