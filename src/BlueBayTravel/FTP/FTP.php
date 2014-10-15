@@ -181,9 +181,9 @@
 			$path = pathinfo($filename);
 
 			if (isset($path['extension'])) {
-				return FTP_BINARY;
-			} else {
 				return $this->getTransferModeForExtension($path['extension']);
+			} else {
+				return FTP_ASCII;
 			}
 		}
 
