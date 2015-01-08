@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 	namespace BlueBayTravel\FTP;
 
@@ -7,9 +7,9 @@
 	class FTPServiceProvider extends ServiceProvider {
 		/**
 		 * Indicates if loading of the provider is deferred.
-		 * @var boolean
+		 * @var bool
 		 */
-		protected $defer = FALSE;
+		protected $defer = false;
 
 		/**
 		 * Bootstraps the application events.
