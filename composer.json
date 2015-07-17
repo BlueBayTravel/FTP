@@ -1,29 +1,31 @@
 {
-	"name": "bluebaytravel/ftp",
-	"description": "Laravel 4 FTP Service Provider",
-	"keywords": ["ftp", "laravel"],
-	"license": "MIT",
-	"authors": [
-		{
-			"name": "James Brooks",
-			"email": "james@bluebaytravel.co.uk"
-		}
-	],
-	"require": {
-		"php": ">=5.3",
-		"illuminate/support": "4.x"
-	},
-	"require-dev": {
-		"phpunit/phpunit": "~4.1.0",
-		"squizlabs/php_codesniffer": "~1.5.0",
-		"mockery/mockery": "~0.9.0",
-		"satooshi/php-coveralls": "~0.6"
-	},
-	"autoload": {
-		"psr-0": {
-			"BlueBayTravel\\FTP\\": "src/",
-			"BlueBayTravel\\FTP\\Tests\\": "tests/"
-		}
-	},
-	"miniumum-stability": "dev"
+    "name": "bluebaytravel/Ftp",
+    "description": "Laravel 5 FTP Service Provider",
+    "keywords": ["ftp", "laravel", "Blue Bay Travel"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "James Brooks",
+            "email": "james@bluebaytravel.co.uk"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9",
+        "illuminate/support": "5.1.*"
+    },
+    "require-dev": {
+        "graham-campbell/testbench": "~3.0",
+        "phpunit/phpunit": "^4.7.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "BlueBayTravel\\Ftp\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "BlueBayTravel\\Tests\\Ftp\\": "tests/"
+        }
+    },
+    "miniumum-stability": "dev"
 }

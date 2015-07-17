@@ -1,0 +1,5 @@
+# Laravel FTP
+
+# License
+
+MIT
