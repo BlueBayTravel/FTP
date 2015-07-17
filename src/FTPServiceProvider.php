@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace BlueBayTravel\FTP;
+namespace BlueBayTravel\Ftp;
 
 use Illuminate\Support\ServiceProvider;
 
