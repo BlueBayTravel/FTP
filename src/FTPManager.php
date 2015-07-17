@@ -28,7 +28,7 @@ class FtpManager
     protected $connections = [];
 
     /**
-     * Create a new FTP instance.
+     * Create a new Ftp instance.
      *
      * @param \Illuminate\Foundation\Application $app
      *
@@ -46,7 +46,7 @@ class FtpManager
      */
     public function getDefaultConnection()
     {
-        return $this->app['config']['ftp::default'];
+        return $this->app['config']['ftp.default'];
     }
 
     /**
@@ -61,31 +61,31 @@ class FtpManager
     protected function getConfig($name)
     {
         $name = $name ?: $this->getDefaultConnection();
-        $connections = $this->app['config']['ftp::connections'];
+        $connections = $this->app['config']['ftp.connections'];
 
         if (is_null($config = array_get($connections, $name))) {
-            throw new \InvalidArgumentException("FTP [$name] not configured.");
+            throw new \InvalidArgumentException("Ftp [{$name}] not configured.");
         }
 
         return $config;
     }
 
     /**
-     * Create the FTP connection instance.
+     * Create the Ftp connection instance.
      *
      * @param string $name
      *
-     * @return \BlueBayTravel\FTP\FTP
+     * @return \BlueBayTravel\Ftp\Ftp
      */
     protected function makeConnection($name)
     {
         $config = $this->getConfig($name);
 
-        return new FTP($config);
+        return new Ftp($config);
     }
 
     /**
-     * Get a FTP connection instance.
+     * Get a Ftp connection instance.
      *
      * @param string $name
      */
@@ -118,11 +118,11 @@ class FtpManager
     }
 
     /**
-     * Reconnect to the given FTP.
+     * Reconnect to the given Ftp.
      *
      * @param string $name
      *
-     * @return \BlueBayTravel\FTP\FTP
+     * @return \BlueBayTravel\Ftp\Ftp
      */
     public function reconnect($name = null)
     {
