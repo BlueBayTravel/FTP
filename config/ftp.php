@@ -41,6 +41,6 @@ return [
             'pass'    => 'pa55w0rd!',
             'port'    => 21,
             'passive' => false,
-        ]
+        ],
     ],
 ];
