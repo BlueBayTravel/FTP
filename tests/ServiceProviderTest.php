@@ -11,7 +11,6 @@
 
 namespace BlueBayTravel\Tests\Ftp;
 
-use BlueBayTravel\Ftp\FtpManager;
 use BlueBayTravel\Ftp\FtpServiceProvider;
 use GrahamCampbell\TestBench\AbstractPackageTestCase;
 use GrahamCampbell\TestBenchCore\ServiceProviderTrait;
