@@ -11,6 +11,8 @@
 
 namespace BlueBayTravel\Ftp;
 
+use InvalidArgumentException;
+
 class FtpManager
 {
     /**
@@ -64,7 +66,7 @@ class FtpManager
         $connections = $this->app['config']['ftp.connections'];
 
         if (is_null($config = array_get($connections, $name))) {
-            throw new \InvalidArgumentException("Ftp [{$name}] not configured.");
+            throw new InvalidArgumentException("Ftp [{$name}] not configured.");
         }
 
         return $config;
