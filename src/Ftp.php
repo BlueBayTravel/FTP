@@ -18,7 +18,7 @@ class Ftp
     /**
      * The active FTP connection resource id.
      */
-    protected $cID;
+    protected $connection;
 
     /**
      * Creates a new FTP connection instance.
@@ -27,7 +27,7 @@ class Ftp
      */
     public function __construct($config)
     {
-        $this->cID = $this->connect($config);
+        $this->connection = $this->connect($config);
     }
 
     /**
@@ -49,16 +49,16 @@ class Ftp
             $config['passive'] = true;
         }
 
-        $cID = ftp_connect($config['host'], $config['port']);
-        $response = ftp_login($cID, $config['user'], $config['pass']);
-        ftp_pasv($cID, $config['passive']);
-        ftp_set_option($cID, FTP_TIMEOUT_SEC, 300);
+        $connection = ftp_connect($config['host'], $config['port']);
+        $response = ftp_login($connection, $config['user'], $config['pass']);
+        ftp_pasv($connection, $config['passive']);
+        ftp_set_option($connection, FTP_TIMEOUT_SEC, 300);
 
-        if (!$cID || !$response) {
+        if (!$connection || !$response) {
             throw new Exception('FTP Connection Failed');
         }
 
-        return $cID;
+        return $connection;
     }
 
     /**
@@ -68,43 +68,43 @@ class Ftp
      */
     public function disconnect()
     {
-        return ftp_close($this->cID);
+        return ftp_close($this->connection);
     }
 
     /**
      * Returns a directory's file listing.
      *
-     * @param string $directory directory to list
+     * @param string $directory
      *
      * @return array
      */
     public function ls($directory = '.')
     {
-        return ftp_nlist($this->cID, $directory);
+        return ftp_nlist($this->connection, $directory);
     }
 
     /**
      * Creates a new directory.
      *
-     * @param string $dir directory path to create
+     * @param string $dir
      *
      * @return bool
      */
     public function dir($dir)
     {
-        return ftp_mkdir($this->cID, $dir);
+        return ftp_mkdir($this->connection, $dir);
     }
 
     /**
      * Change into a directory.
      *
-     * @param string $dir directory to switch to
+     * @param string $dir
      *
      * @return bool
      */
     public function chdir($dir)
     {
-        return ftp_chdir($this->cID, $dir);
+        return ftp_chdir($this->connection, $dir);
     }
 
     /**
@@ -117,7 +117,7 @@ class Ftp
      */
     public function upload($fromFile, $toFile)
     {
-        return ftp_put($this->cID, $toFile, $fromFile, $this->getTransferModeForFile($fromFile));
+        return ftp_put($this->connection, $toFile, $fromFile, $this->getTransferModeForFile($fromFile));
     }
 
     /**
@@ -130,7 +130,7 @@ class Ftp
      */
     public function download($fromFile, $toFile)
     {
-        return ftp_get($this->cID, $toFile, $fromFile, $this->getTransferModeForFile($fromFile));
+        return ftp_get($this->connection, $toFile, $fromFile, $this->getTransferModeForFile($fromFile));
     }
 
     /**
@@ -140,7 +140,7 @@ class Ftp
      */
     public function up()
     {
-        return ftp_cdup($this->cID);
+        return ftp_cdup($this->connection);
     }
 
     /**
@@ -153,7 +153,7 @@ class Ftp
      */
     public function chmod($mode, $filename)
     {
-        return ftp_chmod($this->cID, $mode, $filename);
+        return ftp_chmod($this->connection, $mode, $filename);
     }
 
     /**
@@ -165,7 +165,7 @@ class Ftp
      */
     public function delete($path)
     {
-        return ftp_delete($this->cID, $path);
+        return ftp_delete($this->connection, $path);
     }
 
     /**
@@ -175,7 +175,7 @@ class Ftp
      */
     public function cwd()
     {
-        return ftp_pwd($this->cID);
+        return ftp_pwd($this->connection);
     }
 
     /**
@@ -188,7 +188,7 @@ class Ftp
      */
     public function rename($oldPath, $newPath)
     {
-        return ftp_rename($this->cID, $oldPath, $newPath);
+        return ftp_rename($this->connection, $oldPath, $newPath);
     }
 
     /**
@@ -200,7 +200,7 @@ class Ftp
      */
     public function rmdir($path)
     {
-        return ftp_rmdir($this->cID, $path);
+        return ftp_rmdir($this->connection, $path);
     }
 
     /**
@@ -212,7 +212,7 @@ class Ftp
      */
     public function size($path)
     {
-        return ftp_size($this->cID, $path);
+        return ftp_size($this->connection, $path);
     }
 
     /**
@@ -224,7 +224,7 @@ class Ftp
      */
     public function mtime($path)
     {
-        return ftp_mdtm($this->cID, $path);
+        return ftp_mdtm($this->connection, $path);
     }
 
     /**
