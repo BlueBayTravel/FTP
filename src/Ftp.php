@@ -147,13 +147,13 @@ class Ftp
      * Chmod a file to the given permissions.
      *
      * @param string $mode
-     * @param string $filename
+     * @param string $fileName
      *
      * @return bool
      */
-    public function chmod($mode, $filename)
+    public function chmod($mode, $fileName)
     {
-        return ftp_chmod($this->connection, $mode, $filename);
+        return ftp_chmod($this->connection, $mode, $fileName);
     }
 
     /**
@@ -230,13 +230,13 @@ class Ftp
     /**
      * Returns the FTP_* type for a filename.
      *
-     * @param string $filename
+     * @param string $fileName
      *
      * @return int
      */
-    public function getTransferModeForFile($filename)
+    public function getTransferModeForFile($fileName)
     {
-        $path = pathinfo($filename);
+        $path = pathinfo($fileName);
 
         if (isset($path['extension'])) {
             return $this->getTransferModeForExtension($path['extension']);
