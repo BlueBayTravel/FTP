@@ -254,7 +254,7 @@ class Ftp
      */
     public function getTransferModeForExtension($extension)
     {
-        $extensions = ['am','asp','bat','c','cfm','cgi','conf','cpp','css','csv','dhtml','diz','h','hpp','htm','html','in','inc','js','m4','mak','nfs','nsi','pas','patch','php','php3','php4','php5','phtml','pl','po','py','qmail','sh','shtml','sql','tcl','tpl','txt','vbs','xml','xrc'];
+        $extensions = ['am', 'asp', 'bat', 'c', 'cfm', 'cgi', 'conf', 'cpp', 'css', 'csv', 'dhtml', 'diz', 'h', 'hpp', 'htm', 'html', 'in', 'inc', 'js', 'm4', 'mak', 'nfs', 'nsi', 'pas', 'patch', 'php', 'php3', 'php4', 'php5', 'phtml', 'pl', 'po', 'py', 'qmail', 'sh', 'shtml', 'sql', 'tcl', 'tpl', 'txt', 'vbs', 'xml', 'xrc'];
 
         if (in_array(strtolower($extension), $extensions)) {
             return FTP_ASCII;
