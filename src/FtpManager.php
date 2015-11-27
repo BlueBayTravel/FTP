@@ -30,7 +30,7 @@ class FtpManager
     protected $connections = [];
 
     /**
-     * Create a new Ftp instance.
+     * Create a new ftp manager instance.
      *
      * @param \Illuminate\Foundation\Application $app
      *
