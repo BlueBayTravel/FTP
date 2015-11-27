@@ -59,9 +59,7 @@ class FtpServiceProvider extends ServiceProvider
     protected function registerFtp()
     {
         $this->app->singleton('ftp', function ($app) {
-            $ftp = new FtpManager($app);
-
-            return $ftp;
+            return new FtpManager($app->config);
         });
 
         $this->app->alias('ftp', FtpManager::class);

@@ -16,11 +16,11 @@ use InvalidArgumentException;
 class FtpManager
 {
     /**
-     * The application instance.
+     * The config.
      *
-     * @var \Illuminate\Foundation\Application
+     * @var \Illuminate\Contracts\Config\Repository
      */
-    protected $app;
+    protected $config;
 
     /**
      * The active connection instances.
@@ -32,13 +32,13 @@ class FtpManager
     /**
      * Create a new ftp manager instance.
      *
-     * @param \Illuminate\Foundation\Application $app
+     * @param \Illuminate\Contracts\Config\Repository $config
      *
      * @return void
      */
-    public function __construct($app)
+    public function __construct($config)
     {
-        $this->app = $app;
+        $this->config = $config;
     }
 
     /**
@@ -48,7 +48,7 @@ class FtpManager
      */
     public function getDefaultConnection()
     {
-        return $this->app['config']['ftp.default'];
+        return $this->config['ftp.default'];
     }
 
     /**
@@ -63,7 +63,7 @@ class FtpManager
     protected function getConfig($name)
     {
         $name = $name ?: $this->getDefaultConnection();
-        $connections = $this->app['config']['ftp.connections'];
+        $connections = $this->config['ftp.connections'];
 
         if (is_null($config = array_get($connections, $name))) {
             throw new InvalidArgumentException("Ftp [{$name}] not configured.");
