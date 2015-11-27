@@ -11,7 +11,7 @@
 
 namespace BlueBayTravel\Tests\Ftp;
 
-use BlueBayTravel\Ftp\FtpServiceProvider;
+use BlueBayTravel\Ftp\FtpManager;
 use GrahamCampbell\TestBench\AbstractPackageTestCase;
 use GrahamCampbell\TestBenchCore\ServiceProviderTrait;
 
@@ -19,8 +19,8 @@ class ServiceProviderTest extends AbstractPackageTestCase
 {
     use ServiceProviderTrait;
 
-    protected function getServiceProviderClass($app)
+    public function testFtpManagerIsInjectable()
     {
-        return FtpServiceProvider::class;
+        $this->assertIsInjectable(FtpManager::class);
     }
 }
