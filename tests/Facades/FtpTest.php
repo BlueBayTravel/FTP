@@ -16,7 +16,7 @@ use BlueBayTravel\Ftp\FtpManager;
 use BlueBayTravel\Tests\Ftp\AbstractTestCase;
 use GrahamCampbell\TestBenchCore\FacadeTrait;
 
-class LoggerTest extends AbstractTestCase
+class FtpTest extends AbstractTestCase
 {
     use FacadeTrait;
 
