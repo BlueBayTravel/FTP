@@ -120,7 +120,7 @@ class Foo
     }
 }
 
-App::make('Foo')->bar();
+App::make('ftp')->ls();
 ```
 
 ## License
